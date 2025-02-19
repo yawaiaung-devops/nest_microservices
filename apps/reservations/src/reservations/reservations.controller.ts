@@ -23,7 +23,7 @@ export class ReservationsController {
     @Body() reservation: CreateReservationDto,
     @CurrentUser() user: UserDto,
   ) {
-    return this.reservationsService.create(reservation, user._id);
+    return this.reservationsService.create(reservation, user);
   }
 
   @UseGuards(JwtAuthGuard)

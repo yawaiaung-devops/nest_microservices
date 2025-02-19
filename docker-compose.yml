@@ -35,5 +35,17 @@ services:
       - ./apps/payments/.env
     volumes:
       - .:/usr/src/app
+  notification:
+    build:
+      context: .
+      dockerfile: ./apps/notification/Dockerfile
+      target: development
+    command: pnpm run start:dev notification
+    ports:
+      - 3004:3004
+    env_file:
+      - ./apps/notification/.env
+    volumes:
+      - .:/usr/src/app
   mongodb:
     image: mongo
